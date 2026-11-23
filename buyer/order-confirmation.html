@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="View your SproutRoute order confirmation.">
+    <title>Order Confirmation | SproutRoute</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="manifest" href="../manifest.json">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="buyer-body buyer-order-body" data-page="confirmation">
+<button class="button install-button" data-install-button type="button" hidden>Install app</button>
+
+<header class="navbar">
+    <div class="nav-container">
+        <a href="browse.html" class="logo" aria-label="SproutRoute Buyer Dashboard">
+            <img src="../images/SRlogo.jpg" alt="SproutRoute Logo">
+            <span>SproutRoute Buyer</span>
+        </a>
+        <nav class="nav-menu" aria-label="Main navigation">
+            <a href="browse.html" >Dashboard</a>
+            <a href="browse.html#product-listings">Browse Products</a>
+            <a href="cart.html" >Cart <span data-cart-count></span></a>
+            <a href="my-orders.html" class="active" aria-current="page">My Orders</a>
+            <a href="recurring-deliveries.html" >Recurring Deliveries</a>
+        </nav>
+        <div class="nav-actions">
+            <a href="../home/index.html" class="btn btn-outline" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+        </div>
+    </div>
+</header>
+
+<div class="connection-banner"
+     data-connection-banner
+     role="status"
+     aria-live="polite"
+     hidden>
+    <span class="status-dot" aria-hidden="true"></span>
+    <span data-connection-message></span>
+</div>
+
+<main class="page buyer-order-main">
+    <section aria-label="Order confirmation">
+        <div id="confirmation-content" role="status" aria-live="polite">
+            <h1>Order Confirmation</h1>
+            <p>Loading your order details...</p>
+        </div>
+    </section>
+
+    <nav aria-label="Next steps">
+        <p><a href="../buyer/browse.html">Continue Shopping</a></p>
+        <p><a href="../buyer/my-orders.html">View My Orders</a></p>
+        <p><a href="../buyer/cart.html">Return to Cart</a></p>
+    </nav>
+</main>
+
+<footer class="footer">
+    <p>Rooted in community. Grown with care.</p>
+    <p>&copy; <span data-current-year>2026</span> SproutRoute</p>
+</footer>
+<script src="../scripts/app.js" defer></script>
+<script src="../scripts/offline-db.js" defer></script>
+<script src="../scripts/buyer-orders.js" defer></script>
+<script src="../scripts/connection.js" defer></script>
+<script src="../scripts/install-prompt.js" defer></script>
+<script src="../scripts/register-sw.js" defer></script>
+</body>
+</html>

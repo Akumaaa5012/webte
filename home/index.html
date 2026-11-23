@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Preview fresh products from local farms with SproutRoute.">
+  <title>SproutRoute | Local food</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="manifest" href="../manifest.json">
+</head>
+<body>
+<button class="button install-button" data-install-button type="button" hidden>Install app</button>
+<header class="header">
+  <a class="brand" href="index.html" aria-label="SproutRoute home">
+    <img class="logo" src="../images/SRlogo.jpg" alt="SproutRoute logo">
+    <span>SproutRoute</span>
+  </a>
+  <nav class="nav" aria-label="Main navigation">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+
+  </nav>
+</header>
+
+<div class="connection-banner" data-connection-banner role="status" aria-live="polite" hidden>
+  <span class="status-dot" aria-hidden="true"></span>
+  <span data-connection-message></span>
+</div>
+
+<main class="page home" id="home">
+  <section class="hero" aria-labelledby="page-title">
+    <h1 id="page-title">Your local market<br> <span class="highlight">starts here.</span></h1>
+    <p class="intro">Discover fresh finds from the farms growing right in your community.</p>
+    <a class="button hero-button" href="login.html">Log in to explore the market <span aria-hidden="true">→</span></a>
+  </section>
+
+ <section class="about-page" id="about" aria-labelledby="about-title">
+    <div class="about-wrap">
+      <h2 class="section-title" id="about-title">About Us</h2>
+
+      <div class="about-intro">
+        <div class="about-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" focusable="false">
+            <path d="M10 34c8-1 15-7 17-17 8 2 12 8 10 15-2 8-12 12-27 2Z" />
+            <path d="M11 38c7-9 14-15 23-20" />
+          </svg>
+        </div>
+        <p>SproutRoute connects local farmers directly with restaurants. No middlemen, so farmers earn more and restaurants get fresh, reliable produce.</p>
+      </div>
+
+      <div class="about-feature">
+        <div class="feature-icon feature-icon-farm" aria-hidden="true">
+          <svg viewBox="0 0 48 48" focusable="false">
+            <path d="m7 22 17-13 17 13v18H7V22Z" />
+            <path d="M18 40V27h12v13M12 23h24" />
+          </svg>
+        </div>
+        <div class="feature-copy">
+          <h3>Fresh from the farm, straight to your kitchen.</h3>
+          <p>SproutRoute connects local farmers directly with restaurants. No middlemen, so farmers earn more and restaurants get fresh, reliable produce.</p>
+        </div>
+      </div>
+
+      <div class="about-feature">
+        <div class="feature-icon feature-icon-offline" aria-hidden="true">
+          <svg viewBox="0 0 48 48" focusable="false">
+            <path d="M12 30a12 12 0 0 1 23-5 8 8 0 0 1 1 16H14a7 7 0 0 1-2-11Z" />
+            <path d="m15 14 20 20M35 14 15 34" />
+          </svg>
+        </div>
+        <div class="feature-copy">
+          <h3>Works offline.</h3>
+          <p>It also works offline. Orders are saved on your device and sent once you’re back online.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="service-page" id="services" aria-labelledby="services-title">
+    <h2 class="section-title section-title-center" id="services-title">Services</h2>
+    <p class="section-subtitle">Offered Services</p>
+
+    <div class="service-grid">
+      <article class="service-card">
+        <div class="service-icon service-icon-produce" aria-hidden="true">
+          <svg viewBox="0 0 48 48" focusable="false">
+            <path d="M8 18h32l-3 22H11L8 18Z" />
+            <path d="M17 18a7 7 0 0 1 14 0M24 11V7m-5 8c-4-7-11-5-11-5 1 6 5 9 11 9m10-4c4-7 11-5 11-5-1 6-5 9-11 9" />
+          </svg>
+        </div>
+        <h3>For Restaurants</h3>
+        <ul>
+          <li>Browse local produce</li>
+          <li>Order in bulk and set recurring deliveries</li>
+          <li>Share your location and pick a delivery date</li>
+          <li>Track your orders</li>
+        </ul>
+      </article>
+
+      <article class="service-card">
+        <div class="service-icon service-icon-farm" aria-hidden="true">
+          <svg viewBox="0 0 48 48" focusable="false">
+            <path d="m6 23 18-14 18 14v17H6V23Z" />
+            <path d="M18 40V27h12v13M12 23h24M10 17l14-11 14 11" />
+          </svg>
+        </div>
+        <h3>For Farmers</h3>
+        <ul>
+          <li>Manage your farm, products, and stock</li>
+          <li>Confirm and update orders</li>
+          <li>Sell directly to restaurants</li>
+        </ul>
+      </article>
+
+      <article class="service-card">
+        <div class="service-icon service-icon-everyone" aria-hidden="true">
+          <svg viewBox="0 0 48 48" focusable="false">
+            <rect x="14" y="6" width="20" height="36" rx="4" />
+            <path d="M20 12h8M21 36h6M8 18a18 18 0 0 1 0 12m32-12a18 18 0 0 0 0 12" />
+          </svg>
+        </div>
+        <h3>For Everyone</h3>
+        <ul>
+          <li>Works offline and syncs automatically</li>
+          <li>Push notifications for orders and updates</li>
+          <li>Installable on your phone</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+
+<footer class="footer">
+  <p>Rooted in community. Grown with care.</p>
+  <p>&copy; <span data-current-year>2026</span> SproutRoute</p>
+</footer>
+
+<script src="../scripts/app.js" defer></script>
+<script src="../scripts/offline-db.js" defer></script>
+<script src="../scripts/connection.js" defer></script>
+<script src="../scripts/install-prompt.js" defer></script>
+<script src="../scripts/register-sw.js" defer></script>
+</body>
+</html>

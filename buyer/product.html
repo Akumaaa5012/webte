@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Product information from a local SproutRoute farm.">
+  <title>Product details | SproutRoute</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="manifest" href="../manifest.json">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="buyer-body buyer-order-body">
+<button class="button install-button" data-install-button type="button" hidden>Install app</button>
+<header class="navbar">
+  <div class="nav-container">
+    <a href="browse.html" class="logo" aria-label="SproutRoute Buyer Dashboard">
+      <img src="../images/SRlogo.jpg" alt="SproutRoute Logo">
+      <span>SproutRoute Buyer</span>
+    </a>
+    <nav class="nav-menu" aria-label="Main navigation">
+      <a href="browse.html" class="active" aria-current="page">Dashboard</a>
+      <a href="browse.html#product-listings">Browse Products</a>
+      <a href="cart.html" >Cart <span data-cart-count></span></a>
+      <a href="my-orders.html" >My Orders</a>
+      <a href="recurring-deliveries.html" >Recurring Deliveries</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="../home/index.html" class="btn btn-outline" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+    </div>
+  </div>
+</header>
+
+<div class="connection-banner" data-connection-banner role="status" aria-live="polite" hidden>
+  <span class="status-dot" aria-hidden="true"></span>
+  <span data-connection-message></span>
+</div>
+
+<main class="page details buyer-order-main">
+  <a class="back" href="browse.html"><span aria-hidden="true">←</span> Back to products</a>
+  <article class="detail">
+    <div class="image image-placeholder" role="img" aria-label="Product image placeholder">S</div>
+    <div class="details-info">
+      <p class="eyebrow">(Category)</p>
+      <h1>Product name</h1>
+      <p class="detail-farm">Farm name</p>
+      <p class="detail-price">Price: —</p>
+      <p class="description">Product description....</p>
+
+      <div class="table-wrap">
+        <table class="details-table">
+          <caption>Availability and order details</caption>
+          <tbody>
+          <tr>
+            <th scope="row">Stock available</th>
+            <td>—</td>
+          </tr>
+          <tr>
+            <th scope="row">Minimum order quantity</th>
+            <td>—</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <form id="add-to-cart-form" class="add-to-cart">
+        <label for="order-qty">Quantity (kg)
+          <input id="order-qty" type="number" min="1" step="0.5" value="1" required>
+        </label>
+        <button class="button" type="submit">Add to cart</button>
+        <p id="add-to-cart-message" role="status"></p>
+      </form>
+    </div>
+  </article>
+</main>
+
+<footer class="footer">
+  <p>Rooted in community. Grown with care.</p>
+  <p>&copy; <span data-current-year>2026</span> SproutRoute</p>
+</footer>
+
+<script src="../scripts/app.js" defer></script>
+<script src="../scripts/buyer.js" defer></script>
+<script src="../scripts/offline-db.js" defer></script>
+<script src="../scripts/buyer-orders.js" defer></script>
+<script src="../scripts/connection.js" defer></script>
+<script src="../scripts/install-prompt.js" defer></script>
+<script src="../scripts/register-sw.js" defer></script>
+</body>
+</html>

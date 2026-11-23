@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seller Dashboard | SproutRoute</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="manifest" href="../manifest.json">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="seller-body">
+<button class="button install-button" data-install-button type="button" hidden>Install app</button>
+<header class="navbar">
+  <div class="nav-container">
+    <a href="seller-dashboard.html" class="logo">
+      <img src="../images/SRlogo.jpg" alt="SproutRoute Logo">
+      <span>SproutRoute Seller</span>
+    </a>
+    <nav class="nav-menu">
+      <a href="seller-dashboard.html" class="active">Dashboard</a>
+      <a href="products.html">Products</a>
+      <a href="orders.html">Orders &amp; Logistics</a>
+    </nav>
+    <div class="nav-actions">
+      <div class="notification-container">
+        <button class="notification-bell-btn" id="notifBell" aria-label="Notifications">
+          <i class="fa-solid fa-bell"></i>
+          <span class="notification-badge" id="notifBadge" style="display:none;">0</span>
+        </button>
+        <div class="notification-dropdown" id="notifDropdown">
+          <div class="notification-dropdown-title">Notifications</div>
+          <div id="notifList"><div class="notification-item">Loading notifications...</div></div>
+        </div>
+      </div>
+      <a href="../home/login.html" class="btn btn-outline" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+    </div>
+  </div>
+</header>
+
+<main class="seller-main">
+  <div class="page-header">
+    <div>
+      <h2>Seller Dashboard</h2>
+      <p>Overview of your product catalog, orders, and inventory status.</p>
+    </div>
+    <div class="page-header-actions">
+      <a href="products.html" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add Product</a>
+    </div>
+  </div>
+
+  <section class="seller-grid">
+    <div class="stat-card">
+      <div class="stat-icon"><i class="fa-solid fa-box-open"></i></div>
+      <div class="stat-info"><h3>Total Products</h3><p class="stat-value" id="statProducts">0</p></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+      <div class="stat-info"><h3>Active Orders</h3><p class="stat-value" id="statOrders">0</p></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon warning"><i class="fa-solid fa-triangle-exclamation"></i></div>
+      <div class="stat-info"><h3>Low Stock Items</h3><p class="stat-value" id="statLowStock">0</p></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon info"><i class="fa-solid fa-truck"></i></div>
+      <div class="stat-info"><h3>In Transit</h3><p class="stat-value" id="statInTransit">0</p></div>
+    </div>
+  </section>
+
+  <section id="lowStockAlertSection" class="alert-banner" style="display:none;">
+    <h4><i class="fa-solid fa-circle-exclamation"></i> Inventory Alerts</h4>
+    <ul id="lowStockList"></ul>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h3>Recent Orders</h3>
+      <a href="orders.html" class="btn btn-sm btn-outline">View All Orders</a>
+    </div>
+    <div class="table-responsive">
+      <table class="seller-table">
+        <thead>
+        <tr>
+          <th>Order ID</th><th>Restaurant</th><th>Items</th><th>Total (₱)</th><th>Status</th><th>Actions</th>
+        </tr>
+        </thead>
+        <tbody id="recentOrdersBody">
+        <tr><td colspan="6" class="empty-cell">Loading recent orders...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<script src="../scripts/seller.js"></script>
+<script src="../scripts/offline-db.js" defer></script>
+<script src="../scripts/connection.js" defer></script>
+<script src="../scripts/install-prompt.js" defer></script>
+<script src="../scripts/register-sw.js" defer></script>
+</body>
+</html>

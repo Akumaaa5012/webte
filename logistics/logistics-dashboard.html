@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logistics Dashboard | SproutRoute</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="manifest" href="../manifest.json">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="logistics-body">
+<button class="button install-button" data-install-button type="button" hidden>Install app</button>
+<header class="navbar">
+    <div class="nav-container">
+        <a href="logistics-dashboard.html" class="logo">
+            <img src="../images/SRlogo.jpg" alt="SproutRoute Logo">
+            <span>SproutRoute Logistics</span>
+        </a>
+        <nav class="nav-menu">
+            <a href="logistics-dashboard.html" class="active">Dashboard</a>
+        </nav>
+        <div class="nav-actions">
+            <a href="../home/login.html" class="btn btn-outline" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+        </div>
+    </div>
+</header>
+
+<main class="seller-main">
+    <div class="page-header">
+        <div>
+            <h2>Logistics Dashboard</h2>
+            <p>Manage your delivery assignments and track shipment progress.</p>
+        </div>
+    </div>
+
+    <section class="seller-grid">
+        <div class="stat-card">
+            <div class="stat-icon"><i class="fa-solid fa-box"></i></div>
+            <div class="stat-info"><h3>Assigned Deliveries</h3><p class="stat-value" id="statAssigned">0</p></div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon"><i class="fa-solid fa-truck-fast"></i></div>
+            <div class="stat-info"><h3>In Transit</h3><p class="stat-value" id="statInTransit">0</p></div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon info"><i class="fa-solid fa-check-circle"></i></div>
+            <div class="stat-info"><h3>Delivered Today</h3><p class="stat-value" id="statDelivered">0</p></div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon warning"><i class="fa-solid fa-clock"></i></div>
+            <div class="stat-info"><h3>Pending Pickup</h3><p class="stat-value" id="statPending">0</p></div>
+        </div>
+    </section>
+
+    <div class="seller-toolbar">
+        <div class="seller-search-filter">
+            <select id="statusFilter">
+                <option value="">All Statuses</option>
+                <option value="pending">Pending</option>
+                <option value="assigned">Assigned</option>
+                <option value="picked_up">Picked Up</option>
+                <option value="in_transit">In Transit</option>
+                <option value="delivered">Delivered</option>
+                <option value="cancelled">Cancelled</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="seller-table">
+            <thead>
+            <tr>
+                <th>Delivery ID</th><th>Order ID</th><th>Restaurant</th><th>Farm</th><th>Status</th><th>Pickup Time</th><th>Actions</th>
+            </tr>
+            </thead>
+            <tbody id="deliveriesTableBody">
+            <tr><td colspan="7" class="empty-cell">Loading deliveries...</td></tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<!-- Delivery Detail Modal -->
+<div class="seller-modal" id="deliveryDetailModal" role="dialog" aria-modal="true">
+    <div class="seller-modal-content wide">
+        <div class="seller-modal-header">
+            <h3>Delivery Details #<span id="modalDeliveryId"></span></h3>
+            <button type="button" class="seller-modal-close" id="closeDeliveryDetailModalBtn" aria-label="Close">&times;</button>
+        </div>
+        <div id="deliveryModalBody"></div>
+    </div>
+</div>
+
+<script src="../scripts/logistics.js"></script>
+<script src="../scripts/offline-db.js" defer></script>
+<script src="../scripts/connection.js" defer></script>
+<script src="../scripts/install-prompt.js" defer></script>
+<script src="../scripts/register-sw.js" defer></script>
+</body>
+</html>

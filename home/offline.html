@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SproutRoute is temporarily unavailable without a connection.">
+  <title>You’re offline | SproutRoute</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="manifest" href="../manifest.json">
+</head>
+<body>
+<button class="button install-button" data-install-button type="button" hidden>Install app</button>
+<header class="header">
+  <a class="brand" href="index.html" aria-label="SproutRoute home">
+    <img class="logo" src="../images/SRlogo.jpg" alt="SproutRoute logo">
+    <span>SproutRoute</span>
+  </a>
+  <nav class="nav" aria-label="Main navigation">
+    <a class="button nav-button" href="login.html">Log in</a>
+  </nav>
+</header>
+
+<div class="connection-banner" data-connection-banner role="status" aria-live="polite" hidden>
+  <span class="status-dot" aria-hidden="true"></span>
+  <span data-connection-message></span>
+</div>
+
+<main class="page offline">
+  <section class="offline-message" aria-labelledby="page-title">
+    <span class="offline-icon" aria-hidden="true">⌁</span>
+    <h1 id="page-title">You’re offline.</h1>
+    <a class="button offline-button" href="index.html">Go to home</a>
+  </section>
+</main>
+
+<footer class="footer">
+  <p>Rooted in community. Grown with care.</p>
+  <p>&copy; <span data-current-year>2026</span> SproutRoute</p>
+</footer>
+<script src="../scripts/app.js" defer></script>
+<script src="../scripts/offline-db.js" defer></script>
+<script src="../scripts/connection.js" defer></script>
+<script src="../scripts/install-prompt.js" defer></script>
+<script src="../scripts/register-sw.js" defer></script>
+</body>
+</html>

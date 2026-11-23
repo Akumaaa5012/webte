@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Manage recurring farm deliveries on SproutRoute.">
+    <title>Recurring Deliveries | SproutRoute</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="manifest" href="../manifest.json">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="buyer-body buyer-order-body" data-page="recurring">
+<button class="button install-button" data-install-button type="button" hidden>Install app</button>
+
+<header class="navbar">
+    <div class="nav-container">
+        <a href="browse.html" class="logo" aria-label="SproutRoute Buyer Dashboard">
+            <img src="../images/SRlogo.jpg" alt="SproutRoute Logo">
+            <span>SproutRoute Buyer</span>
+        </a>
+        <nav class="nav-menu" aria-label="Main navigation">
+            <a href="browse.html" >Dashboard</a>
+            <a href="browse.html#product-listings">Browse Products</a>
+            <a href="cart.html" >Cart <span data-cart-count></span></a>
+            <a href="my-orders.html" >My Orders</a>
+            <a href="recurring-deliveries.html" class="active" aria-current="page">Recurring Deliveries</a>
+        </nav>
+        <div class="nav-actions">
+            <a href="../home/index.html" class="btn btn-outline" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+        </div>
+    </div>
+</header>
+
+<div class="connection-banner"
+     data-connection-banner
+     role="status"
+     aria-live="polite"
+     hidden>
+    <span class="status-dot" aria-hidden="true"></span>
+    <span data-connection-message></span>
+</div>
+
+<main class="page buyer-order-main">
+    <p class="eyebrow">Plan Ahead</p>
+    <h1>Recurring Deliveries</h1>
+
+    <p>
+        Schedule regular deliveries from a farm.
+        Each schedule belongs to one farm and can be
+        updated, paused, resumed, or cancelled.
+    </p>
+
+    <div id="page-message" role="status" aria-live="polite"></div>
+
+    <div class="split-layout">
+
+        <section class="panel" aria-labelledby="schedule-form-title">
+            <h2 id="schedule-form-title">Create a Schedule</h2>
+
+            <form id="schedule-form">
+                <input type="hidden" id="schedule-id">
+
+                <div class="field">
+                    <label for="schedule-farm">Farm</label>
+                    <select id="schedule-farm" required>
+                        <option value="">Select a farm</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="schedule-frequency">Delivery Frequency</label>
+                    <select id="schedule-frequency" required>
+                        <option value="daily">Daily</option>
+                        <option value="weekly" selected>Weekly</option>
+                        <option value="biweekly">Every Two Weeks</option>
+                        <option value="monthly">Monthly</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="schedule-day">Preferred Day</label>
+                    <select id="schedule-day">
+                        <option value="">No Specific Day</option>
+                        <option value="Monday">Monday</option>
+                        <option value="Tuesday">Tuesday</option>
+                        <option value="Wednesday">Wednesday</option>
+                        <option value="Thursday">Thursday</option>
+                        <option value="Friday">Friday</option>
+                        <option value="Saturday">Saturday</option>
+                        <option value="Sunday">Sunday</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="schedule-time">Preferred Delivery Time</label>
+                    <input id="schedule-time" type="time"
+                           value="09:00" required>
+                </div>
+
+                <div class="field">
+                    <label for="schedule-start">Start Date</label>
+                    <input id="schedule-start" type="date" required>
+                </div>
+
+                <div class="field">
+                    <label for="schedule-end">End Date (Optional)</label>
+                    <input id="schedule-end" type="date">
+                </div>
+
+                <fieldset class="product-picker">
+                    <legend>Products and Quantities</legend>
+                    <p>Select products and enter the quantity for each.</p>
+                    <div id="schedule-products">
+                        <p>Loading available products...</p>
+                    </div>
+                </fieldset>
+
+                <div class="form-actions">
+                    <button class="button" type="submit">
+                        Save Schedule
+                    </button>
+
+                    <button class="button button-secondary"
+                            id="reset-schedule" type="button">
+                        Clear Form
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <section aria-labelledby="schedules-title">
+            <h2 id="schedules-title">Your Schedules</h2>
+
+            <div id="schedules-content">
+                <p>Loading your recurring schedules...</p>
+            </div>
+        </section>
+
+    </div>
+</main>
+
+<footer class="footer">
+    <p>Rooted in community. Grown with care.</p>
+    <p>&copy; <span data-current-year>2026</span> SproutRoute</p>
+</footer>
+<script src="../scripts/app.js" defer></script>
+<script src="../scripts/offline-db.js" defer></script>
+<script src="../scripts/buyer-orders.js" defer></script>
+<script src="../scripts/connection.js" defer></script>
+<script src="../scripts/install-prompt.js" defer></script>
+<script src="../scripts/register-sw.js" defer></script>
+</body>
+</html>

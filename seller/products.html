@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Products | SproutRoute</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="manifest" href="../manifest.json">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="seller-body">
+<button class="button install-button" data-install-button type="button" hidden>Install app</button>
+<header class="navbar">
+  <div class="nav-container">
+    <a href="seller-dashboard.html" class="logo">
+      <img src="../images/SRlogo.jpg" alt="SproutRoute Logo">
+      <span>SproutRoute Seller</span>
+    </a>
+    <nav class="nav-menu">
+      <a href="seller-dashboard.html">Dashboard</a>
+      <a href="products.html" class="active">Products</a>
+      <a href="orders.html">Orders &amp; Logistics</a>
+    </nav>
+    <div class="nav-actions">
+      <div class="notification-container">
+        <button class="notification-bell-btn" id="notifBell" aria-label="Notifications">
+          <i class="fa-solid fa-bell"></i>
+          <span class="notification-badge" id="notifBadge" style="display:none;">0</span>
+        </button>
+        <div class="notification-dropdown" id="notifDropdown">
+          <div class="notification-dropdown-title">Notifications</div>
+          <div id="notifList"><div class="notification-item">Loading notifications...</div></div>
+        </div>
+      </div>
+      <a href="../home/login.html" class="btn btn-outline" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+    </div>
+  </div>
+</header>
+
+<main class="seller-main">
+  <div class="page-header">
+    <div>
+      <h2>Manage Inventory &amp; Products</h2>
+      <p>Add products, update stock levels, edit details, or manage categories.</p>
+    </div>
+    <div class="page-header-actions">
+      <button class="btn btn-outline" id="openFarmCatModalBtn"><i class="fa-solid fa-wheat-awn"></i> Categories</button>
+      <button class="btn btn-primary" id="openAddProductModalBtn"><i class="fa-solid fa-plus"></i> Add Product</button>
+    </div>
+  </div>
+
+  <div class="seller-toolbar">
+    <div class="seller-search-filter">
+      <input type="text" id="productSearchInput" placeholder="Search product name...">
+      <select id="categoryFilter"><option value="">All Categories</option></select>
+    </div>
+  </div>
+
+  <div id="placeholderNote" class="placeholder-note" style="display:none;">
+    <i class="fa-solid fa-circle-info"></i>
+    <span>Showing sample placeholder items. Your real products and categories will appear here once added or when the server is reachable.</span>
+  </div>
+
+  <div class="table-responsive">
+    <table class="seller-table">
+      <thead>
+      <tr>
+        <th>Photo</th><th>Product Name</th><th>Category</th><th>Price</th><th>Stock (kg)</th><th>Actions</th>
+      </tr>
+      </thead>
+      <tbody id="productsTableBody">
+      <tr><td colspan="6" class="empty-cell">Loading products...</td></tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+<!-- Add / Edit Product Pop-up -->
+<div class="seller-modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="seller-modal-content">
+    <div class="seller-modal-header">
+      <h3 id="modalTitle">Add New Product</h3>
+      <button type="button" class="seller-modal-close" id="closeProductModalBtn" aria-label="Close">&times;</button>
+    </div>
+    <form id="productForm">
+      <input type="hidden" id="productId" value="">
+      <div class="form-group">
+        <label for="productName">Product Name</label>
+        <input type="text" id="productName" required maxlength="100" placeholder="e.g. Fresh Tomatoes">
+      </div>
+      <div class="form-group">
+        <label for="productCategory">Category</label>
+        <select id="productCategory" required></select>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="productPrice">Price per kg (₱)</label>
+          <input type="number" step="0.01" min="0.01" id="productPrice" required placeholder="0.00">
+        </div>
+        <div class="form-group">
+          <label for="productStock">Stock (kg)</label>
+          <input type="number" step="0.01" min="0" id="productStock" required placeholder="0">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="productMinOrder">Minimum Order (kg)</label>
+          <input type="number" step="0.01" min="0.01" id="productMinOrder" value="1" required>
+        </div>
+        <div class="form-group">
+          <label for="productHarvest">Harvest Date</label>
+          <input type="date" id="productHarvest" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="productPhotoInput">Photo Upload</label>
+        <input type="file" id="productPhotoInput" accept="image/*">
+        <div class="photo-upload-preview" id="photoPreview">
+          <span style="color:#7d887c; font-size:0.75rem;">No Image</span>
+        </div>
+      </div>
+      <p class="form-error" id="productFormError"></p>
+      <div class="form-actions">
+        <button type="button" class="btn btn-outline" id="cancelProductBtn">Cancel</button>
+        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Save Product</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Categories Pop-up -->
+<div class="seller-modal" id="farmCatModal" role="dialog" aria-modal="true" aria-labelledby="farmCatTitle">
+  <div class="seller-modal-content">
+    <div class="seller-modal-header">
+      <h3 id="farmCatTitle">Categories</h3>
+      <button type="button" class="seller-modal-close" id="closeFarmCatModalBtn" aria-label="Close">&times;</button>
+    </div>
+
+    <form id="addCatForm" class="inline-add-form">
+      <div class="form-row" style="grid-template-columns: 1fr auto;">
+        <input type="text" id="newCatName" placeholder="New category name..." required maxlength="50">
+        <button type="submit" class="btn btn-primary">Add Category</button>
+      </div>
+    </form>
+    <ul id="catList" class="item-list"></ul>
+  </div>
+</div>
+
+<script src="../scripts/seller.js"></script>
+<script src="../scripts/offline-db.js" defer></script>
+<script src="../scripts/connection.js" defer></script>
+<script src="../scripts/install-prompt.js" defer></script>
+<script src="../scripts/register-sw.js" defer></script>
+</body>
+</html>

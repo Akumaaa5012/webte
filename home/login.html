@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Log in to your SproutRoute account.">
+  <title>Log in | SproutRoute</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="manifest" href="../manifest.json">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<button class="button install-button" data-install-button type="button" hidden>Install app</button>
+<header class="header">
+  <a class="brand" href="index.html" aria-label="SproutRoute home">
+    <img class="logo" src="../images/SRlogo.jpg" alt="SproutRoute logo">
+    <span>SproutRoute</span>
+  </a>
+</header>
+
+<div class="connection-banner" data-connection-banner role="status" aria-live="polite" hidden>
+  <span class="status-dot" aria-hidden="true"></span>
+  <span data-connection-message></span>
+</div>
+
+<main class="page login">
+  <section class="login-box" id="role-picker" aria-labelledby="role-picker-title">
+    <h1 id="role-picker-title">Choose how you log in.</h1>
+    <p class="form-intro">First, tell us how you use SproutRoute.</p>
+    <div class="role-options">
+      <a class="role-option" href="login.html?role=buyer">
+        <span class="role-icon" aria-hidden="true"><img src="../images/buyer.png" alt=""></span>
+        <span><strong>I'm a buyer</strong><small>Discover local products</small></span>
+        <span class="role-arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="role-option" href="login.html?role=seller">
+        <span class="role-icon" aria-hidden="true"><img src="../images/farmer.png" alt=""></span>
+        <span><strong>I'm a seller</strong><small>Manage your farm and products</small></span>
+        <span class="role-arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="role-option" href="login.html?role=logistics">
+        <span class="role-icon" aria-hidden="true"><i class="fa-solid fa-truck"></i></span>
+        <span><strong>I'm logistics</strong><small>Manage delivery assignments</small></span>
+        <span class="role-arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+    <a class="back login-back" href="index.html"><span aria-hidden="true">←</span> Back home</a>
+  </section>
+
+  <!-- log-in -->
+  <section class="login-box" id="login-form-card" aria-labelledby="page-title" hidden>
+    <p class="eyebrow">Welcome back</p>
+    <h1 id="page-title">Log in to your market.</h1>
+    <p class="form-intro" id="login-role-description">Sign in to continue to SproutRoute.</p>
+
+    <form class="form">
+      <input id="login-role" name="role" type="hidden" value="buyer">
+      <div class="field">
+        <label for="email">Email address</label>
+        <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+      </div>
+      <p id="login-error" role="alert"></p>
+      <button class="button submit" type="submit">Log in</button>
+    </form>
+    <a class="back login-back" href="login.html"><span aria-hidden="true">←</span> Change role</a>
+  </section>
+</main>
+
+<footer class="footer">
+  <p>Rooted in community. Grown with care.</p>
+  <p>&copy; <span data-current-year>2026</span> SproutRoute</p>
+</footer>
+
+<script src="../scripts/app.js" defer></script>
+<script src="../scripts/login.js" defer></script>
+<script src="../scripts/offline-db.js" defer></script>
+<script src="../scripts/connection.js" defer></script>
+<script src="../scripts/install-prompt.js" defer></script>
+<script src="../scripts/register-sw.js" defer></script>
+</body>
+</html>

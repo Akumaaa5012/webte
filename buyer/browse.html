@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Buyer dashboard and product catalog for SproutRoute.">
+  <title>Buyer Dashboard | SproutRoute</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="manifest" href="../manifest.json">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="buyer-body">
+<button class="button install-button" data-install-button type="button" hidden>Install app</button>
+
+<header class="navbar">
+  <div class="nav-container">
+    <a href="browse.html" class="logo">
+      <img src="../images/SRlogo.jpg" alt="SproutRoute Logo">
+      <span>SproutRoute Buyer</span>
+    </a>
+    <nav class="nav-menu" aria-label="Main navigation">
+      <a href="browse.html" class="active" aria-current="page">Dashboard</a>
+      <a href="browse.html#product-listings">Browse Products</a>
+      <a href="cart.html">Cart <span data-cart-count></span></a>
+      <a href="my-orders.html">My Orders</a>
+      <a href="recurring-deliveries.html">Recurring Deliveries</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="../home/index.html" class="btn btn-outline" id="logoutBtn">
+        <i class="fa-solid fa-right-from-bracket"></i> Logout
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="connection-banner" data-connection-banner role="status" aria-live="polite" hidden>
+  <span class="status-dot" aria-hidden="true"></span>
+  <span data-connection-message></span>
+</div>
+
+<main class="buyer-main">
+  <section class="page-header">
+    <div>
+      <p class="buyer-eyebrow">Fresh from local farms</p>
+      <h1>Buyer Dashboard</h1>
+      <p>Discover fresh produce from farms in your community and manage your orders in one place.</p>
+    </div>
+    <div class="page-header-actions">
+      <a href="cart.html" class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i> View Cart</a>
+      <a href="my-orders.html" class="btn btn-outline"><i class="fa-solid fa-receipt"></i> My Orders</a>
+    </div>
+  </section>
+
+  <section class="buyer-shortcuts" aria-label="Buyer shortcuts">
+    <a class="buyer-shortcut" href="#product-listings">
+      <span class="buyer-shortcut-icon"><i class="fa-solid fa-leaf"></i></span>
+      <span><strong>Browse Products</strong><small>Find fresh local produce</small></span>
+      <i class="fa-solid fa-chevron-right shortcut-arrow"></i>
+    </a>
+    <a class="buyer-shortcut" href="my-orders.html">
+      <span class="buyer-shortcut-icon"><i class="fa-solid fa-box"></i></span>
+      <span><strong>My Orders</strong><small>Review your order history</small></span>
+      <i class="fa-solid fa-chevron-right shortcut-arrow"></i>
+    </a>
+    <a class="buyer-shortcut" href="recurring-deliveries.html">
+      <span class="buyer-shortcut-icon"><i class="fa-solid fa-calendar-days"></i></span>
+      <span><strong>Recurring Deliveries</strong><small>Manage regular deliveries</small></span>
+      <i class="fa-solid fa-chevron-right shortcut-arrow"></i>
+    </a>
+  </section>
+
+  <section class="buyer-listings" id="product-listings" aria-label="Product listings">
+    <div class="section-head buyer-section-head">
+      <div>
+        <h2>Browse Products</h2>
+        <p>Search and filter fresh products from available farms.</p>
+      </div>
+    </div>
+
+    <div class="seller-toolbar buyer-toolbar">
+      <div class="seller-search-filter buyer-search-filter">
+        <div class="buyer-filter-field buyer-search-field">
+          <label for="product-search">Search products</label>
+          <input id="product-search" type="search" placeholder="Try tomatoes, honey…" autocomplete="off">
+        </div>
+        <div class="buyer-filter-field">
+          <label for="category-filter">Category</label>
+          <select id="category-filter"><option value="">All categories</option></select>
+        </div>
+        <div class="buyer-filter-field">
+          <label for="farm-filter">Farm</label>
+          <select id="farm-filter"><option value="">All farms</option></select>
+        </div>
+        <div class="buyer-filter-field">
+          <label for="sort-filter">Sort by</label>
+          <select id="sort-filter">
+            <option value="featured">Featured</option>
+            <option value="name">Name, A to Z</option>
+            <option value="price_asc">Price, low to high</option>
+            <option value="price_desc">Price, high to low</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="products" aria-label="Product previews">
+      <p>Loading products...</p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer buyer-footer">
+  <p>Rooted in community. Grown with care.</p>
+  <p>&copy; <span data-current-year>2026</span> SproutRoute</p>
+</footer>
+
+<script src="../scripts/app.js" defer></script>
+<script src="../scripts/buyer.js" defer></script>
+<script src="../scripts/offline-db.js" defer></script>
+<script src="../scripts/buyer-orders.js" defer></script>
+<script src="../scripts/connection.js" defer></script>
+<script src="../scripts/install-prompt.js" defer></script>
+<script src="../scripts/register-sw.js" defer></script>
+</body>
+</html>
